@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Contact form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+    body{
+      margin: 0;
+      padding: 0;
+    } 
+    .form{
+      width: auto;
+      /* width: 480px;
+      height: 400px; */
+      border-radius: 10px;
+      padding: 20px;
+      background-color: hsl(0, 0%, 100%);
+    }
+    .grid {
+      display: grid;
+    }
+    .grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .gap-6 {
+      gap: 1rem; /* 16px */
+    }
+    .gap-2 {
+      gap: 1rem; /* 16px */
+    }
+    .w-full{
+      width: 100%;
+    }
+    .col-start-1 {
+      grid-column-start: 1;
+    }
+    .col-start-2{
+      grid-column-start: 2;
+    }
+    .col-start-3{
+      grid-column-start: 3;
+    }
+    .col-end-3 {
+      grid-column-end: 3;
+    }
+    .col-end-1 {
+      grid-column-end: 1;
+    }
+    .col-end-2 {
+      grid-column-end: 2;
+    }
+    .border{
+      border: 1px solid hsl(187, 24%, 22%);
+    }
+    .flex{
+      display: flex;
+    }
+    .p-2{
+      padding: 10px;
+    }
+    .mt-2{
+      margin-top: 10px;
+    }
+    .rounded-md{
+      border-radius: 8px;
+    }
+    label,p{
+      color: hsl(187, 24%, 22%);
+      font-size: 16px;
+    }
+    .outline-none{
+      outline: none;
+    }
+    .p-1{
+      padding: 5px;
+    }
+    .p-input{
+      padding: 8px 0px;
+    }
+    .p-input:hover{
+      border: 1.55px solid hsl(187, 24%, 22%);
+    }
+    .button{
+      font-size: 16px;
+      background-color: hsl(169, 82%, 27%);
+      color: hsl(0, 0%, 100%);
+      cursor: pointer;
+      border: 1px solid hsl(148, 38%, 91%);
+      font-weight: 400;
+    }
+    .button:hover{
+      background-color: hsl(187, 24%, 22%);
+    }
+    .check1.active{
+      background-color: black;
+    }
+    .parent.checked {
+            background-color: hsl(148, 38%, 91%); /* Light yellow background */
+     } 
+     @media (min-width: 640px) {
+      .md\:col-end-1 {
+        grid-column-end: 1;
+      }
+      .md\:col-end-2 {
+        grid-column-end: 2;
+      }
+      .md\:col-start-2{
+       grid-column-start: 2;
+      }
+      .md\:grid-cols-2{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 639px) {
+      .sm\:grid-col-1 {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        
+      }
+    }
+    .p-0{
+      padding: 0px;
+    }
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .bg-dark{
+      background-color: black;
+    }
+    .p-4{
+      padding: 1rem 0.05rem;
+    }
+    .error-message {
+            color: hsl(0, 66%, 54%);
+            font-size: 0.8rem;
+            margin-top: 0.05rem;
+        }
+    #successMessage{
+      width: 380px;
+      background-color: rgb(94, 94, 91);
+      border-radius: 10px;
+      position: absolute;
+      left: 38%;
+      top: 3%;
+      padding: 10px;
+      color: hsl(148, 38%, 91%);
+    }
+    #successMessage p{
+      color: hsl(148, 38%, 91%);
+    }
+  </style>
+</head>
+<body>
+
+  <main class="p-4" style="height: 100vh; display: flex; background-color: hsl(148, 38%, 91%); justify-content: center; align-items: center;">
+    <form class="form" action="" id="contactForm">
+      <h2 style="color: hsl(187, 24%, 22%); font-weight: 700;">Contact Us</h2>
+      <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
+        <div class="col-start-1 md:col-end-1 col-end-3">
+          <label for="firstname">First Name *</label>
+          <input class="w-full outline-none p-input border rounded-md"  type="text" name="firstname" id="firstname" >
+          <p class="error-message" id="firstnameError"></p>
+        </div>
+        <div class="md:col-start-2 md:col-end-2 col-start-1 col-end-3">
+          <label for="firstname">Last Name *</label>
+          <input class="w-full outline-none p-input border rounded-md" type="text" name="lastname" id="lastname" >
+          <p class="error-message" id="lastnameError"></p>
+        </div>
+        <div class="col-start-1 col-end-3">
+          <label for="emailAddress">Email Address *</label>
+          <input class="w-full outline-none p-input border rounded-md" type="text" name="emailAddress" id="emailAddress" >
+          <p class="error-message" id="emailAddressError"></p>
+        </div>
+        <div class="col-start-1 col-end-3">
+          <label for="queryTypee">Query Type *</label>
+          <div class="grid  md:grid-cols-2 sm:grid-cols-1 gap-6 mt-2">
+            <div class="flex border p-2 rounded-md parent ">
+              <input type="radio" class="check" name="queryType" id="radio1">
+              <label for="">General Enquiry</label>
+            </div>
+            <div class="flex border p-2 rounded-md parent">
+              <input type="radio" class="check" name="queryType" id="radio2">
+              <label for="">Support Request</label>
+            </div>
+          </div>
+          <p class="error-message" id="queryTypeError"></p>
+        </div>
+        <div class="col-start-1 col-end-3">
+          <label for="firstname">Message *</label>
+          <textarea rows="4" class="w-full rounded-md outline-none p-input" name="message" id="message" ></textarea>
+          <p class="error-message" id="messageError"></p>
+        </div>
+        <div class="col-start-1 col-end-3">
+          <div class="flex">
+            <input type="checkbox" id="consent">
+            <p>I consent to being contacted by the team*</p>
+          </div>
+          <p class="error-message" id="consentError"></p>
+        </div>
+        <div class="col-start-1 col-end-3 ">
+            <button  class="w-full button p-2  rounded-md type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div id="successMessage" style="display: none;">
+      <div style="display: flex;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 24"><path fill="hsl(148, 38%, 91%)" d="m10.6 13.8l-2.15-2.15q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7L9.9 15.9q.3.3.7.3t.7-.3l5.65-5.65q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>
+        <h5 style="margin: 0px 8px;">Message Sent!</h5>
+      </div>
+      <p>Thanks for completing the form. We will be in touch soon!</p>
+    </div>
+  </main>
+  <script>
+
+
+
+
+       const parents = document.querySelectorAll('.parent');
+
+       parents.forEach(function(parent) {
+                parent.addEventListener('click', function() {
+                    parents.forEach(function(p) {
+                        p.classList.remove('checked');
+                    });
+
+                    // Find the radio button inside this parent
+                    const radio = parent.querySelector('.check');
+                    
+                    radio.checked = !radio.checked;
+
+                    if (radio.checked) {
+                        parent.classList.add('checked');
+                    } else {
+                        parent.classList.remove('checked');
+                    }
+                });
+            });
+
+            const radios = document.querySelectorAll('.check');
+            radios.forEach(function(radio) {
+                radio.addEventListener('change', function() {
+                    parents.forEach(function(parent) {
+                        parent.classList.remove('checked');
+                    });
+
+                    if (radio.checked) {
+                        radio.parentElement.classList.add('checked');
+                    }
+                });
+            });
+
+
+
+            document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            //successMessage.style.display = 'none';
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                // Remove all existing error messages
+                clearErrorMessages();
+
+                // Perform validation
+                if (validateForm()) {
+                  successMessage.style.display = 'block';
+                    // Hide success message after 2 seconds
+                    setTimeout(function() {
+                        successMessage.style.display = 'none';
+                    }, 2000);
+
+                    console.log("Successfully");
+                    // You can submit the form here if needed:
+                    // form.submit();
+                }
+            });
+
+            function validateForm() {
+                let isValid = true;
+
+                // Validation for First Name
+                const firstname = document.getElementById('firstname').value.trim();
+                if (firstname === '') {
+                    isValid = false;
+                    document.getElementById('firstnameError').textContent = 'Please enter your first name.';
+                }
+
+                // Validation for Last Name
+                const lastname = document.getElementById('lastname').value.trim();
+                if (lastname === '') {
+                    isValid = false;
+                    document.getElementById('lastnameError').textContent = 'Please enter your last name.';
+                }
+
+                // Validation for Email Address
+                const emailAddress = document.getElementById('emailAddress').value.trim();
+                if (emailAddress === '') {
+                    isValid = false;
+                    document.getElementById('emailAddressError').textContent = 'Please enter your email address.';
+                } else if (!isValidEmail(emailAddress)) {
+                    isValid = false;
+                    document.getElementById('emailAddressError').textContent = 'Please enter a valid email address.';
+                }
+
+                // Validation for Query Type (Radio Buttons)
+                const queryType = document.querySelector('input[name="queryType"]:checked');
+                if (!queryType) {
+                    isValid = false;
+                    document.getElementById('queryTypeError').textContent = 'Please select a query type.';
+                }
+
+                // Validation for Message
+                const message = document.getElementById('message').value.trim();
+                if (message === '') {
+                    isValid = false;
+                    document.getElementById('messageError').textContent = 'Please enter your message.';
+                }
+
+                // Validation for Consent Checkbox
+                const consent = document.getElementById('consent').checked;
+                if (!consent) {
+                    isValid = false;
+                    document.getElementById('consentError').textContent = 'To submit this form. please consent to being contacted.';
+                }
+
+                return isValid;
+            }
+
+            function clearErrorMessages() {
+                const errorMessages = document.querySelectorAll('.error-message');
+                errorMessages.forEach(function(error) {
+                    error.textContent = '';
+                });
+            }
+
+            function isValidEmail(email) {
+                // Simple email validation regex
+                const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return regex.test(email);
+            }
+        });
+</script>
+</body>
+</html>
